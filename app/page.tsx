@@ -1,85 +1,18 @@
 import NextImage from "next/image";
 import type { Metadata } from "next";
 import type { ComponentProps } from "react";
+import HomePage from "./home-page";
+import {
+  brandDirections,
+  heartChainProduct as heartChain,
+  necklaceProduct as necklace,
+  plushProduct as product,
+  tarotProduct as tarot,
+} from "./catalog";
 
 function Image(props: ComponentProps<typeof NextImage>) {
   return <NextImage {...props} unoptimized />;
 }
-
-const product = {
-  index: "001",
-  category: "毛绒玩偶",
-  categoryEn: "PLUSH",
-  name: "抱抱柚子叶",
-  nameEn: "Hug Pomelo Leaf",
-  size: "30 × 16 cm",
-  story:
-    "我是来自果壳宇宙的小精灵。我的使命，是把星光般的好运轻轻递到你手里。",
-  assets: {
-    hero: "/products/hug-pomelo-leaf/hero.png",
-    details: "/products/hug-pomelo-leaf/details.jpg",
-    angles: "/products/hug-pomelo-leaf/angles.jpg",
-    identity: "/products/hug-pomelo-leaf/identity-card.jpg",
-    scenes: "/products/hug-pomelo-leaf/scenarios.jpg",
-    size: "/products/hug-pomelo-leaf/size.jpg",
-    gift: "/products/hug-pomelo-leaf/gift-box.jpg",
-    film: "/products/hug-pomelo-leaf/film.mp4",
-  },
-};
-
-const tarot = {
-  index: "002",
-  code: "TH-1",
-  category: "科技潮玩",
-  categoryEn: "TECH TOY",
-  name: "乌哩掌心塔罗",
-  nameEn: "The Universe in a Nutshell",
-  assets: {
-    hero: "/products/th-1/hero-concept.png",
-    views: "/products/th-1/product-views.png",
-    colors: "/products/th-1/colors.png",
-    keychain: "/products/th-1/keychain-concept.png",
-    cards: "/products/th-1/cards.jpg",
-  },
-};
-
-const necklace = {
-  index: "003",
-  category: "潮流配饰",
-  categoryEn: "ACCESSORY",
-  name: "星座塔罗项链",
-  nameEn: "Zodiac Tarot Necklace",
-  assets: {
-    hero: "/products/zodiac-tarot-necklace/hero.jpg",
-    packaging: "/products/zodiac-tarot-necklace/packaging.jpg",
-    packagingDetail: "/products/zodiac-tarot-necklace/packaging-detail.jpg",
-    fire: "/products/zodiac-tarot-necklace/fire-signs.jpg",
-    earth: "/products/zodiac-tarot-necklace/earth-signs.jpg",
-    air: "/products/zodiac-tarot-necklace/air-signs.jpg",
-    water: "/products/zodiac-tarot-necklace/water-signs.jpg",
-  },
-};
-
-const heartChain = {
-  index: "004",
-  code: "EB-SHAKE",
-  category: "潮流配饰",
-  categoryEn: "ACCESSORY",
-  name: "乌哩银色桃心挂链",
-  nameEn: "Silver Heart Shake Chain",
-  size: "26 × 270 mm",
-  material: "PU + 合金",
-  assets: {
-    hero: "/products/eb-shake-silver-heart/hero.jpg",
-    realShot: "/products/eb-shake-silver-heart/real-shot.jpg",
-    backingCard: "/products/eb-shake-silver-heart/backing-card.png",
-    packaging: "/products/eb-shake-silver-heart/packaging.jpg",
-    specifications: "/products/eb-shake-silver-heart/specifications.jpg",
-    display: "/products/eb-shake-silver-heart/display.jpg",
-    packagingSquare: "/products/eb-shake-silver-heart/packaging-square.jpg",
-    scenesSquare: "/products/eb-shake-silver-heart/scenes-square.jpg",
-  },
-};
 
 const productFamilies = [
   {
@@ -124,8 +57,6 @@ const productFamilies = [
   },
 ];
 
-const brandDirections = ["科技潮玩", "潮流配饰", "交互毛绒", "AI 陪伴"];
-
 const features = [
   {
     number: "01",
@@ -168,12 +99,20 @@ const tarotFeatures = [
 ];
 
 export const metadata: Metadata = {
-  title: "Woolley 乌哩文化创意",
+  title: { absolute: "Woolleygoods｜Woolley 乌哩文化创意" },
   description:
     "Woolley 乌哩文化创意，以温暖科技打造科技潮玩、潮流配饰、交互毛绒与 AI 陪伴产品。",
+  alternates: {
+    canonical: "/",
+    languages: { "zh-CN": "/", en: "/en" },
+  },
 };
 
 export default function Home() {
+  return <HomePage />;
+}
+
+export function LegacyHome() {
   return (
     <main>
       <header className="site-header">
