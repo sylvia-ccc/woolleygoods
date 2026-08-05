@@ -1,0 +1,3011 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #42271e;
+  --cream: #fffae7;
+  --citrus: #ffe59d;
+  --leaf: #4a633f;
+  --leaf-light: #a2d4f1;
+  --berry: #e9a1c1;
+  --sky: #a2d4f1;
+  --line: rgba(66, 39, 30, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-geist), "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+body::selection {
+  background: var(--berry);
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  display: block;
+}
+
+.site-header {
+  align-items: center;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 250, 231, 0.84);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  height: 76px;
+  left: 0;
+  padding: 0 3vw;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 20;
+}
+
+.wordmark {
+  display: block;
+  height: 50px;
+  position: relative;
+  width: 105px;
+}
+
+.wordmark img {
+  object-fit: contain;
+}
+
+.site-header nav {
+  display: flex;
+  font-size: 0.82rem;
+  gap: 2rem;
+  letter-spacing: 0.08em;
+}
+
+.site-header nav a,
+.archive-link {
+  position: relative;
+}
+
+.site-header nav a::after,
+.archive-link::after {
+  background: var(--ink);
+  bottom: -0.38rem;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms ease;
+  width: 100%;
+}
+
+.site-header nav a:hover::after,
+.site-header nav a:focus-visible::after,
+.archive-link:hover::after,
+.archive-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.archive-link {
+  font-size: 0.8rem;
+  justify-self: end;
+  letter-spacing: 0.08em;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  min-height: 100svh;
+  padding-top: 0;
+}
+
+.hero-copy {
+  align-content: center;
+  display: grid;
+  padding: 7vw 4vw 4vw 7vw;
+  position: relative;
+}
+
+.eyebrow,
+.section-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  margin: 0 0 1.6rem;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(4.5rem, 8.5vw, 9.6rem);
+  font-weight: 500;
+  letter-spacing: -0.09em;
+  line-height: 0.79;
+  margin: 0 0 3rem;
+}
+
+.hero h1 span {
+  color: var(--leaf);
+  display: block;
+  font-style: italic;
+  margin-left: 0.38em;
+  margin-top: 0.16em;
+}
+
+.hero-intro {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1rem, 1.35vw, 1.3rem);
+  line-height: 1.9;
+  margin: 0 0 2.4rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  align-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.84rem;
+  gap: 2.4rem;
+  justify-content: space-between;
+  min-width: 154px;
+  padding: 0.9rem 1.2rem;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button-dark {
+  background: var(--ink);
+  color: white;
+}
+
+.button-light:hover,
+.button-light:focus-visible {
+  background: var(--citrus);
+}
+
+.hero-specs {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin: clamp(3rem, 6vh, 6rem) 0 0;
+  padding-top: 1.1rem;
+}
+
+.hero-specs div {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hero-specs dt {
+  color: rgba(45, 33, 26, 0.56);
+  font-size: 0.59rem;
+  letter-spacing: 0.16em;
+}
+
+.hero-specs dd {
+  font-size: 0.74rem;
+  margin: 0;
+}
+
+.hero-visual {
+  background: var(--citrus);
+  min-height: calc(100svh - 76px);
+  overflow: hidden;
+  padding: 3vw;
+  position: relative;
+}
+
+.hero-visual::before,
+.hero-visual::after {
+  border: 1px solid rgba(45, 33, 26, 0.22);
+  border-radius: 50%;
+  content: "";
+  height: 76%;
+  left: 11%;
+  position: absolute;
+  top: 12%;
+  transform: rotate(12deg);
+  width: 78%;
+}
+
+.hero-visual::after {
+  height: 63%;
+  left: 18%;
+  top: 18%;
+  transform: rotate(-17deg);
+  width: 63%;
+}
+
+.hero-image-wrap {
+  background: #fffdf5;
+  border-radius: 50% 50% 44% 44% / 42% 42% 54% 54%;
+  box-shadow: 0 35px 80px rgba(82, 59, 20, 0.13);
+  height: min(74vh, 760px);
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(2deg);
+  width: min(74vh, 760px);
+  z-index: 2;
+}
+
+.hero-image-wrap img {
+  object-fit: cover;
+}
+
+.hero-star {
+  color: var(--berry);
+  font-size: clamp(4rem, 7vw, 8rem);
+  left: 4%;
+  line-height: 1;
+  position: absolute;
+  top: 9%;
+  transform: rotate(14deg);
+  z-index: 3;
+}
+
+.hero-caption {
+  bottom: 2.2vw;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  margin: 0;
+  position: absolute;
+  right: 2.4vw;
+  text-align: right;
+  z-index: 3;
+}
+
+.manifesto {
+  align-items: center;
+  background: var(--ink);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 84vh;
+  overflow: hidden;
+  padding: clamp(6rem, 12vw, 11rem) 7vw;
+  position: relative;
+  text-align: center;
+}
+
+.manifesto::before,
+.manifesto::after {
+  border: 1px solid rgba(243, 239, 159, 0.2);
+  border-radius: 50%;
+  content: "";
+  height: 64vw;
+  left: 50%;
+  position: absolute;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 64vw;
+}
+
+.manifesto::after {
+  height: 47vw;
+  transform: translate(-50%, -50%) rotate(8deg);
+  width: 72vw;
+}
+
+.manifesto h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.8rem, 6.4vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1.18;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.manifesto h2 em {
+  color: var(--citrus);
+  font-weight: 400;
+}
+
+.manifesto > p:last-of-type {
+  color: rgba(255, 255, 255, 0.64);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  margin: 3rem auto 0;
+  max-width: 30rem;
+  position: relative;
+  z-index: 2;
+}
+
+.manifesto-orbit {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6rem;
+  position: relative;
+  width: min(820px, 90%);
+  z-index: 2;
+}
+
+.manifesto-orbit span {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  padding: 0.65rem 1rem;
+}
+
+.details-section,
+.gift-section,
+.archive-section {
+  padding: clamp(6rem, 10vw, 10rem) 7vw;
+}
+
+.section-heading {
+  align-items: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 5rem;
+}
+
+.section-heading .section-kicker {
+  grid-column: 1 / -1;
+}
+
+.section-heading h2,
+.gift-heading h2,
+.archive-heading h2,
+.moments-copy h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.6rem, 5vw, 5.8rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.section-heading > p:last-child {
+  font-family: "Songti SC", "STSong", serif;
+  justify-self: end;
+  line-height: 1.85;
+  margin: 0;
+  max-width: 30rem;
+}
+
+.feature-layout {
+  display: grid;
+  gap: 5vw;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+}
+
+.product-angle-card {
+  aspect-ratio: 1 / 1.03;
+  background: var(--citrus);
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-angle-card img {
+  object-fit: cover;
+}
+
+.product-angle-card figcaption {
+  background: var(--ink);
+  bottom: 1.2rem;
+  color: white;
+  font-size: 0.62rem;
+  left: 1.2rem;
+  letter-spacing: 0.14em;
+  padding: 0.75rem 1rem;
+  position: absolute;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-item {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 2.5rem 1fr;
+  padding: 2rem 0;
+}
+
+.feature-item > span {
+  color: var(--berry);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.feature-item h3 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.6rem, 2.3vw, 2.4rem);
+  font-weight: 400;
+  margin: 0 0 0.7rem;
+}
+
+.feature-item p {
+  color: rgba(45, 33, 26, 0.62);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.size-note {
+  align-items: center;
+  background: var(--leaf-light);
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: auto 1fr 1px auto 1fr;
+  margin-top: auto;
+  padding: 1.7rem;
+}
+
+.size-number {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.size-note > span:not(.size-number):not(.size-divider) {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+.size-divider {
+  background: rgba(45, 33, 26, 0.22);
+  height: 100%;
+}
+
+.film-section {
+  align-items: center;
+  background: var(--ink);
+  color: white;
+  display: grid;
+  gap: 7vw;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 8vw 12vw;
+  position: relative;
+}
+
+.film-section::before {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  content: "";
+  height: 60vw;
+  position: absolute;
+  right: -16vw;
+  top: -12vw;
+  width: 60vw;
+}
+
+.section-kicker-light {
+  color: var(--citrus);
+}
+
+.film-copy {
+  max-width: 37rem;
+  position: relative;
+  z-index: 2;
+}
+
+.film-copy h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3rem, 6vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1.1;
+  margin: 0 0 2.5rem;
+}
+
+.film-copy > p:not(.section-kicker):not(.film-note) {
+  color: rgba(255, 255, 255, 0.66);
+  line-height: 1.9;
+  max-width: 28rem;
+}
+
+.film-note {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  width: fit-content;
+}
+
+.film-frame {
+  aspect-ratio: 9 / 16;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  max-height: 78vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.film-frame video {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.film-index {
+  background: var(--citrus);
+  bottom: 0.8rem;
+  color: var(--ink);
+  font-size: 0.58rem;
+  font-weight: 700;
+  left: 0.8rem;
+  letter-spacing: 0.15em;
+  padding: 0.65rem 0.8rem;
+  pointer-events: none;
+  position: absolute;
+}
+
+.film-vertical {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  margin: 0;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: rotate(90deg) translateX(50%);
+  transform-origin: right center;
+}
+
+.moments-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+
+.moments-image {
+  background: var(--citrus);
+  min-height: 860px;
+  overflow: hidden;
+  position: relative;
+}
+
+.moments-image img {
+  object-fit: cover;
+}
+
+.moments-copy {
+  align-content: center;
+  display: grid;
+  padding: 8vw 7vw;
+}
+
+.moments-copy h2 {
+  margin-bottom: 4rem;
+}
+
+.moment-list > div {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 2.5rem 1fr;
+  padding: 1.5rem 0;
+}
+
+.moment-list span {
+  color: var(--berry);
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.moment-list h3 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.moment-list p {
+  color: rgba(45, 33, 26, 0.6);
+  grid-column: 2;
+  line-height: 1.7;
+  margin: -0.4rem 0 0;
+}
+
+.gift-section {
+  background: #f5e8ef;
+}
+
+.gift-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 5rem;
+}
+
+.gift-heading .section-kicker {
+  grid-column: 1 / -1;
+}
+
+.gift-heading h2 {
+  grid-column: 1 / -1;
+  max-width: 57rem;
+}
+
+.gift-grid {
+  align-items: center;
+  display: grid;
+  gap: 5vw;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+}
+
+.gift-image {
+  aspect-ratio: 1 / 1.08;
+  background: var(--cream);
+  overflow: hidden;
+  position: relative;
+}
+
+.gift-image img {
+  object-fit: cover;
+  object-position: center 76%;
+}
+
+.gift-number {
+  color: var(--berry);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin: 0 0 2rem;
+}
+
+.gift-copy ul {
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+}
+
+.gift-copy li {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(45, 33, 26, 0.2);
+  display: flex;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.45rem, 2.4vw, 2.5rem);
+  gap: 1.4rem;
+  padding: 1.25rem 0;
+}
+
+.gift-copy li span {
+  font-family: var(--font-geist), sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.gift-copy > p:last-child {
+  color: rgba(45, 33, 26, 0.62);
+  line-height: 1.8;
+}
+
+.tarot-section {
+  --tarot-lilac: #cfc6ff;
+  --tarot-violet: #6c4fd8;
+  background: var(--ink);
+  color: white;
+  overflow: hidden;
+}
+
+.tarot-hero {
+  align-items: center;
+  display: grid;
+  gap: 7vw;
+  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.78fr);
+  min-height: 100svh;
+  padding: clamp(7rem, 10vw, 11rem) 7vw;
+  position: relative;
+}
+
+.tarot-hero::before {
+  border: 1px solid rgba(207, 198, 255, 0.28);
+  border-radius: 50%;
+  content: "";
+  height: 62vw;
+  position: absolute;
+  right: -20vw;
+  top: -20vw;
+  width: 62vw;
+}
+
+.tarot-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.tarot-copy .section-kicker {
+  color: var(--tarot-lilac);
+}
+
+.tarot-status {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  margin: 0 0 2rem;
+  padding: 0.65rem 0.9rem;
+}
+
+.tarot-copy h2 {
+  color: var(--tarot-lilac);
+  font-family: "Source Han Sans CN", "Noto Sans CJK SC", "PingFang SC", sans-serif;
+  font-size: clamp(4rem, 8vw, 9rem);
+  font-weight: 850;
+  letter-spacing: -0.1em;
+  line-height: 0.86;
+  margin: 0;
+}
+
+.tarot-subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  margin: 2.3rem 0;
+  text-transform: uppercase;
+}
+
+.tarot-intro {
+  color: rgba(255, 255, 255, 0.67);
+  line-height: 1.85;
+  margin: 0;
+  max-width: 34rem;
+}
+
+.tarot-stats {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 4rem 0 0;
+  padding-top: 1.5rem;
+}
+
+.tarot-stats div {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.tarot-stats dt {
+  color: var(--citrus);
+  font-size: clamp(2rem, 4vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+}
+
+.tarot-stats dd {
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.tarot-hero-image {
+  aspect-ratio: 830 / 1060;
+  background: #dfdbff;
+  justify-self: end;
+  max-height: 78vh;
+  overflow: hidden;
+  position: relative;
+  transform: rotate(2deg);
+  width: min(43vw, 650px);
+  z-index: 2;
+}
+
+.tarot-hero-image img {
+  object-fit: cover;
+}
+
+.tarot-hero-image span {
+  background: var(--ink);
+  bottom: 1.2rem;
+  font-size: 0.58rem;
+  left: 1.2rem;
+  letter-spacing: 0.16em;
+  padding: 0.7rem 0.85rem;
+  position: absolute;
+}
+
+.tarot-details {
+  background: var(--cream);
+  color: var(--ink);
+  display: grid;
+  gap: 5vw;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  margin: 0 7vw;
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.tarot-views {
+  background: #efeded;
+  min-height: 650px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tarot-views img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.tarot-feature-list {
+  align-content: center;
+  display: grid;
+  padding: clamp(2rem, 4vw, 5rem) 2vw;
+}
+
+.tarot-feature-list h3 {
+  font-family: "Source Han Sans CN", "Noto Sans CJK SC", "PingFang SC", sans-serif;
+  font-size: clamp(2.4rem, 4.4vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 1.04;
+  margin: 0 0 2.5rem;
+}
+
+.tarot-feature-list article {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 2rem 1fr;
+  padding: 1.3rem 0;
+}
+
+.tarot-feature-list article > span {
+  color: var(--tarot-violet);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.tarot-feature-list h4 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1.45rem;
+  font-weight: 400;
+  margin: 0 0 0.35rem;
+}
+
+.tarot-feature-list article p {
+  color: rgba(66, 39, 30, 0.58);
+  font-size: 0.86rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.tarot-gallery {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  margin: 1.2rem 7vw 0;
+}
+
+.tarot-gallery figure {
+  height: min(84vh, 900px);
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.tarot-colors {
+  background: #efeded;
+}
+
+.tarot-colors img {
+  object-fit: contain;
+}
+
+.tarot-cards img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.tarot-gallery figcaption {
+  background: var(--cream);
+  bottom: 1rem;
+  color: var(--ink);
+  font-size: 0.58rem;
+  left: 1rem;
+  letter-spacing: 0.15em;
+  padding: 0.7rem 0.85rem;
+  position: absolute;
+}
+
+.tarot-note {
+  align-items: start;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  margin: 6rem 7vw 0;
+  padding: 1.5rem 0 7rem;
+}
+
+.tarot-note span {
+  color: var(--citrus);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.tarot-note p {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.78rem;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 32rem;
+}
+
+.necklace-section {
+  background: #f7f5ef;
+  color: #161513;
+  padding: clamp(6rem, 10vw, 10rem) 7vw;
+}
+
+.necklace-heading {
+  align-items: end;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 5rem;
+}
+
+.necklace-heading .section-kicker {
+  grid-column: 1 / -1;
+}
+
+.necklace-heading h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3rem, 6vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 1.06;
+  margin: 0;
+  max-width: 58rem;
+}
+
+.necklace-heading > div {
+  text-align: right;
+}
+
+.necklace-heading > div p {
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  margin: 0.35rem 0;
+  text-transform: uppercase;
+}
+
+.necklace-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+}
+
+.necklace-hero-image {
+  aspect-ratio: 1;
+  background: #111;
+  overflow: hidden;
+  position: relative;
+}
+
+.necklace-hero-image img {
+  object-fit: cover;
+}
+
+.necklace-intro {
+  align-content: center;
+  background: #111;
+  color: white;
+  display: grid;
+  padding: clamp(2.5rem, 5vw, 6rem);
+}
+
+.necklace-intro .section-kicker {
+  color: var(--sky);
+}
+
+.necklace-intro h3,
+.zodiac-heading h3,
+.necklace-packaging-copy h3 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.3rem, 4vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1.12;
+  margin: 0 0 2rem;
+}
+
+.necklace-intro > p:not(.section-kicker) {
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.85;
+  margin: 0;
+}
+
+.necklace-intro dl {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 4rem 0 0;
+  padding-top: 1.5rem;
+}
+
+.necklace-intro dl div {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.necklace-intro dt {
+  color: var(--citrus);
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+}
+
+.necklace-intro dd {
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.zodiac-heading {
+  align-items: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: clamp(7rem, 10vw, 11rem) 0 4rem;
+}
+
+.zodiac-heading .section-kicker {
+  grid-column: 1 / -1;
+}
+
+.zodiac-heading h3 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.zodiac-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.zodiac-grid figure {
+  aspect-ratio: 0.59;
+  background: white;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.zodiac-grid img {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zodiac-grid figure:hover img {
+  transform: scale(1.025);
+}
+
+.zodiac-grid figcaption {
+  background: rgba(17, 17, 17, 0.92);
+  bottom: 0.75rem;
+  color: white;
+  display: flex;
+  font-size: 0.56rem;
+  justify-content: space-between;
+  left: 0.75rem;
+  letter-spacing: 0.12em;
+  padding: 0.7rem 0.8rem;
+  position: absolute;
+  right: 0.75rem;
+}
+
+.zodiac-grid figcaption span {
+  color: var(--sky);
+}
+
+.necklace-packaging {
+  align-items: stretch;
+  background: #111;
+  color: white;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+  margin-top: clamp(7rem, 10vw, 11rem);
+}
+
+.necklace-packaging-copy {
+  align-content: center;
+  display: grid;
+  padding: clamp(3rem, 6vw, 7rem);
+}
+
+.necklace-packaging-copy .section-kicker {
+  color: var(--sky);
+}
+
+.necklace-packaging-copy > p:not(.section-kicker) {
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.85;
+}
+
+.necklace-packaging-copy ul {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 1rem 0 0;
+}
+
+.necklace-packaging-copy li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 0;
+}
+
+.necklace-packaging-image {
+  min-height: 760px;
+  overflow: hidden;
+  position: relative;
+}
+
+.necklace-packaging-image img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.heart-chain-section {
+  background: #111214;
+  color: white;
+  overflow: hidden;
+  padding: clamp(7rem, 11vw, 12rem) 7vw;
+}
+
+.heart-chain-heading {
+  align-items: end;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 5rem;
+}
+
+.heart-chain-heading .section-kicker {
+  color: var(--sky);
+  grid-column: 1 / -1;
+}
+
+.heart-chain-heading h2 {
+  color: var(--cream);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3.4rem, 6.4vw, 7.4rem);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 1.02;
+  margin: 0;
+  max-width: 64rem;
+}
+
+.heart-chain-heading > div {
+  text-align: right;
+}
+
+.heart-chain-heading > div p {
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  margin: 0.35rem 0;
+  text-transform: uppercase;
+}
+
+.heart-chain-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+}
+
+.heart-chain-hero-image {
+  aspect-ratio: 1.08;
+  background: #050505;
+  margin: 0;
+  min-height: 700px;
+  overflow: hidden;
+  position: relative;
+}
+
+.heart-chain-hero-image img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.heart-chain-hero-image figcaption,
+.heart-chain-gallery figcaption {
+  background: rgba(17, 18, 20, 0.92);
+  bottom: 1.2rem;
+  color: white;
+  font-size: 0.58rem;
+  left: 1.2rem;
+  letter-spacing: 0.16em;
+  padding: 0.75rem 0.9rem;
+  position: absolute;
+}
+
+.heart-chain-intro {
+  align-content: center;
+  background: var(--sky);
+  color: var(--ink);
+  display: grid;
+  padding: clamp(3rem, 5vw, 6rem);
+  position: relative;
+}
+
+.heart-chain-intro::after {
+  color: rgba(255, 250, 231, 0.76);
+  content: "♥";
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(9rem, 20vw, 21rem);
+  line-height: 0.7;
+  position: absolute;
+  right: -4vw;
+  top: 3rem;
+  transform: rotate(8deg);
+}
+
+.heart-chain-intro > * {
+  position: relative;
+  z-index: 1;
+}
+
+.heart-chain-intro h3,
+.heart-chain-gallery-heading h3,
+.heart-chain-specs h3 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.5rem, 4.2vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 1.08;
+  margin: 0 0 2rem;
+}
+
+.heart-chain-intro > p:not(.section-kicker) {
+  line-height: 1.9;
+  margin: 0;
+}
+
+.heart-chain-intro dl {
+  border-top: 1px solid rgba(66, 39, 30, 0.28);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 4rem 0 0;
+  padding-top: 1.5rem;
+}
+
+.heart-chain-intro dl div {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.heart-chain-intro dt {
+  font-size: clamp(1.2rem, 2.1vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.heart-chain-intro dd {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.heart-chain-gallery-heading {
+  align-items: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: clamp(7rem, 10vw, 11rem) 0 4rem;
+}
+
+.heart-chain-gallery-heading .section-kicker,
+.heart-chain-gallery-heading h3 {
+  grid-column: 1 / -1;
+}
+
+.heart-chain-gallery-heading h3 {
+  color: var(--cream);
+  margin-bottom: 0;
+}
+
+.heart-chain-gallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.heart-chain-gallery figure {
+  aspect-ratio: 1;
+  background: var(--sky);
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.heart-chain-gallery img {
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.heart-chain-gallery figure:hover img {
+  transform: scale(1.025);
+}
+
+.heart-chain-specs {
+  background: var(--cream);
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: minmax(340px, 0.78fr) minmax(0, 1.22fr);
+  margin-top: clamp(7rem, 10vw, 11rem);
+}
+
+.heart-chain-specs-copy {
+  align-content: center;
+  display: grid;
+  padding: clamp(3rem, 6vw, 7rem);
+}
+
+.heart-chain-specs-copy > p:not(.section-kicker) {
+  line-height: 1.85;
+  margin: 0;
+}
+
+.heart-chain-specs-copy ul {
+  border-top: 1px solid var(--line);
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+}
+
+.heart-chain-specs-copy li {
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  font-size: 0.75rem;
+  justify-content: space-between;
+  letter-spacing: 0.06em;
+  padding: 1rem 0;
+}
+
+.heart-chain-specs-copy li span {
+  color: rgba(66, 39, 30, 0.52);
+}
+
+.heart-chain-specs-image {
+  background:
+    radial-gradient(circle at 28% 18%, rgba(255, 255, 255, 0.82) 0 2.5%, transparent 2.8%),
+    linear-gradient(160deg, var(--sky), #d9e9f3 58%, var(--cream));
+  margin: 0;
+  min-height: 820px;
+  overflow: hidden;
+  position: relative;
+}
+
+.heart-chain-specs-image img {
+  object-fit: contain;
+  padding: 5%;
+}
+
+.heart-chain-signoff {
+  align-items: end;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7rem;
+  padding-top: 1.5rem;
+}
+
+.heart-chain-signoff span {
+  color: var(--sky);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(4rem, 11vw, 13rem);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 0.8;
+}
+
+.heart-chain-signoff p {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+
+.brand-home,
+.brand-philosophy,
+.product-lineup,
+.hero,
+.tarot-section,
+.necklace-section,
+.heart-chain-section,
+.universe-section,
+.brand-section {
+  scroll-margin-top: 76px;
+}
+
+.brand-home {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  min-height: 100svh;
+  padding-top: 76px;
+}
+
+.brand-home-copy {
+  align-content: center;
+  display: grid;
+  overflow: hidden;
+  padding: clamp(6rem, 9vw, 10rem) clamp(2rem, 5vw, 6rem) 4rem 7vw;
+  position: relative;
+}
+
+.brand-home-copy::after {
+  border: 1px solid rgba(66, 39, 30, 0.18);
+  border-radius: 50%;
+  bottom: -12rem;
+  content: "";
+  height: 26rem;
+  position: absolute;
+  right: -13rem;
+  width: 26rem;
+}
+
+.brand-home-copy h1 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(4rem, 6.3vw, 7.7rem);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-home-copy h1 span {
+  color: var(--leaf);
+  display: block;
+  font-style: italic;
+  margin-bottom: 0.18em;
+}
+
+.brand-home-lead {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1rem, 1.2vw, 1.24rem);
+  line-height: 1.9;
+  margin: 3rem 0 2.1rem;
+  max-width: 37rem;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-home-signoff {
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.22em;
+  margin: clamp(4rem, 8vh, 7rem) 0 0;
+}
+
+.brand-home-stage {
+  background:
+    radial-gradient(circle at 72% 20%, rgba(255, 250, 231, 0.86) 0 4%, transparent 4.3%),
+    radial-gradient(circle at 85% 67%, rgba(255, 229, 157, 0.95) 0 3.2%, transparent 3.5%),
+    var(--sky);
+  min-height: calc(100svh - 76px);
+  overflow: hidden;
+  position: relative;
+}
+
+.brand-home-stage::before {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.34) 0,
+    rgba(255, 255, 255, 0.34) 2px,
+    transparent 2px,
+    transparent 25px
+  );
+  content: "";
+  inset: 0;
+  opacity: 0.42;
+  position: absolute;
+}
+
+.brand-stage-orbit {
+  border: 1px solid rgba(66, 39, 30, 0.32);
+  border-radius: 50%;
+  height: 68%;
+  left: 14%;
+  position: absolute;
+  top: 13%;
+  transform: rotate(-13deg);
+  width: 73%;
+}
+
+.brand-stage-orbit::before,
+.brand-stage-orbit::after {
+  background: var(--berry);
+  border: 5px solid var(--cream);
+  border-radius: 50%;
+  content: "";
+  height: 1.4rem;
+  position: absolute;
+  width: 1.4rem;
+}
+
+.brand-stage-orbit::before {
+  left: 2%;
+  top: 49%;
+}
+
+.brand-stage-orbit::after {
+  background: var(--citrus);
+  right: 5%;
+  top: 15%;
+}
+
+.brand-stage-card {
+  border: 1px solid rgba(66, 39, 30, 0.18);
+  box-shadow: 0 1.6rem 4rem rgba(66, 39, 30, 0.13);
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.brand-stage-plush {
+  background: var(--citrus);
+  border-radius: 48% 48% 44% 44% / 38% 38% 55% 55%;
+  bottom: 7%;
+  height: 71%;
+  left: 8%;
+  transform: rotate(-3deg);
+  width: 52%;
+  z-index: 3;
+}
+
+.brand-stage-plush img {
+  object-fit: cover;
+}
+
+.brand-stage-tarot {
+  background: #dcd8ff;
+  border-radius: 2.8rem;
+  height: 42%;
+  right: 5%;
+  top: 8%;
+  transform: rotate(5deg);
+  width: 33%;
+  z-index: 4;
+}
+
+.brand-stage-tarot img {
+  object-fit: cover;
+}
+
+.brand-stage-necklace {
+  background: #111;
+  border-radius: 50%;
+  bottom: 8%;
+  height: 31%;
+  right: 6%;
+  transform: rotate(-5deg);
+  width: 31%;
+  z-index: 4;
+}
+
+.brand-stage-necklace img {
+  object-fit: cover;
+}
+
+.brand-stage-ip {
+  bottom: 2.6%;
+  height: 21%;
+  left: 43%;
+  position: absolute;
+  transform: rotate(7deg);
+  width: 23%;
+  z-index: 5;
+}
+
+.brand-stage-ip img {
+  object-fit: contain;
+}
+
+.brand-stage-label {
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  margin: 0;
+  position: absolute;
+  right: 4%;
+  top: 54%;
+  transform: rotate(90deg) translateX(100%);
+  transform-origin: right top;
+  z-index: 5;
+}
+
+.brand-marquee {
+  align-items: center;
+  background: var(--ink);
+  color: var(--citrus);
+  display: flex;
+  gap: 4vw;
+  min-height: 58px;
+  overflow: hidden;
+  padding: 0 2vw;
+  white-space: nowrap;
+}
+
+.brand-marquee span {
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  font-size: 0.7rem;
+  font-weight: 800;
+  gap: 4vw;
+  letter-spacing: 0.16em;
+}
+
+.brand-marquee span::after {
+  color: var(--berry);
+  content: "✦";
+  font-size: 1rem;
+}
+
+.brand-philosophy {
+  background: var(--ink);
+  color: var(--cream);
+  display: grid;
+  gap: 8vw;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.75fr);
+  min-height: 90svh;
+  padding: clamp(7rem, 11vw, 12rem) 7vw;
+}
+
+.brand-philosophy .section-kicker {
+  color: var(--citrus);
+}
+
+.brand-philosophy h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(4.4rem, 8.8vw, 10rem);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+  margin: 0;
+}
+
+.brand-philosophy h2 span {
+  color: var(--berry);
+}
+
+.brand-philosophy h2 em {
+  color: var(--sky);
+  font-size: 0.42em;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.brand-philosophy-copy {
+  align-content: center;
+  display: grid;
+}
+
+.brand-philosophy-copy > p {
+  color: rgba(255, 250, 231, 0.76);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+  line-height: 1.9;
+  margin: 0 0 1.5rem;
+}
+
+.brand-direction-list {
+  display: grid;
+  margin-top: 3.5rem;
+}
+
+.brand-direction-list span {
+  align-items: center;
+  border-top: 1px solid rgba(255, 250, 231, 0.22);
+  display: flex;
+  font-size: 0.92rem;
+  justify-content: space-between;
+  letter-spacing: 0.08em;
+  padding: 1rem 0;
+}
+
+.brand-direction-list span:last-child {
+  border-bottom: 1px solid rgba(255, 250, 231, 0.22);
+}
+
+.brand-direction-list b {
+  color: var(--citrus);
+  font-size: 0.6rem;
+}
+
+.product-lineup {
+  background: var(--cream);
+  padding: clamp(7rem, 11vw, 12rem) 4vw;
+}
+
+.product-lineup-heading {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.product-lineup-heading h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3rem, 5.7vw, 6.5rem);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 1;
+  margin: 0;
+}
+
+.product-lineup-heading > p {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  margin: 0 0 0.7rem;
+}
+
+.product-family-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.product-family-card {
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  transition: transform 280ms ease;
+}
+
+.product-family-card:hover,
+.product-family-card:focus-visible {
+  transform: translateY(-6px);
+}
+
+.product-family-image {
+  aspect-ratio: 0.84;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-family-image img {
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-family-card:hover .product-family-image img,
+.product-family-card:focus-visible .product-family-image img {
+  transform: scale(1.035);
+}
+
+.product-family-plush .product-family-image {
+  background: var(--citrus);
+}
+
+.product-family-plush .product-family-image img,
+.product-family-tech .product-family-image img {
+  object-fit: cover;
+}
+
+.product-family-tech .product-family-image {
+  background: #dcd8ff;
+}
+
+.product-family-accessory .product-family-image {
+  background: #111;
+}
+
+.product-family-accessory .product-family-image img {
+  object-fit: cover;
+}
+
+.product-family-heart-chain .product-family-image {
+  background: linear-gradient(160deg, var(--sky), #edf4f7 68%, var(--cream));
+}
+
+.product-family-heart-chain .product-family-image img {
+  object-fit: cover;
+}
+
+.product-family-info {
+  align-content: end;
+  display: grid;
+  min-height: 270px;
+  padding: clamp(1.6rem, 3vw, 3.5rem);
+}
+
+.product-family-info > p:first-child,
+.product-family-info > p:nth-of-type(2) {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.product-family-info h3 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.2rem, 3.5vw, 4.1rem);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 1;
+  margin: 1.2rem 0 0.7rem;
+}
+
+.product-family-info > p:nth-of-type(2) {
+  color: rgba(66, 39, 30, 0.52);
+}
+
+.product-family-info > span {
+  border-bottom: 1px solid currentColor;
+  display: flex;
+  font-size: 0.74rem;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-bottom: 0.8rem;
+}
+
+.universe-section {
+  background: var(--sky);
+  display: grid;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+  min-height: 95svh;
+  overflow: hidden;
+  position: relative;
+}
+
+.universe-copy {
+  align-content: center;
+  display: grid;
+  padding: clamp(6rem, 10vw, 11rem) 5vw clamp(5rem, 8vw, 9rem) 7vw;
+  position: relative;
+  z-index: 2;
+}
+
+.universe-copy h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3.6rem, 6vw, 7.4rem);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1;
+  margin: 0;
+}
+
+.universe-copy > p:not(.section-kicker) {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.9;
+  margin: 3rem 0;
+  max-width: 40rem;
+}
+
+.universe-profile {
+  border-top: 1px solid rgba(66, 39, 30, 0.28);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+}
+
+.universe-profile div {
+  border-bottom: 1px solid rgba(66, 39, 30, 0.28);
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 0;
+}
+
+.universe-profile div:nth-child(odd) {
+  border-right: 1px solid rgba(66, 39, 30, 0.28);
+  padding-right: 1rem;
+}
+
+.universe-profile div:nth-child(even) {
+  padding-left: 1rem;
+}
+
+.universe-profile dt {
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.universe-profile dd {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.universe-visual {
+  min-height: 95svh;
+  position: relative;
+}
+
+.universe-pattern {
+  background: url("/brand/woolley-pattern.png") center / contain no-repeat;
+  inset: 3%;
+  opacity: 0.26;
+  position: absolute;
+  transform: rotate(-3deg) scale(1.12);
+}
+
+.universe-character {
+  margin: 0;
+  position: absolute;
+}
+
+.universe-character img {
+  object-fit: contain;
+}
+
+.universe-character-main {
+  height: 58%;
+  left: 20%;
+  top: 21%;
+  transform: rotate(-3deg);
+  width: 52%;
+  z-index: 3;
+}
+
+.universe-character-work {
+  bottom: 4%;
+  height: 30%;
+  right: 3%;
+  transform: rotate(7deg);
+  width: 30%;
+  z-index: 4;
+}
+
+.universe-character-rest {
+  height: 27%;
+  left: 1%;
+  top: 5%;
+  transform: rotate(-9deg);
+  width: 27%;
+  z-index: 4;
+}
+
+.universe-wooo {
+  align-items: center;
+  background: var(--berry);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  bottom: 8%;
+  display: flex;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.5rem, 3vw, 3.5rem);
+  font-style: italic;
+  font-weight: 700;
+  height: clamp(7rem, 12vw, 11rem);
+  justify-content: center;
+  left: 4%;
+  transform: rotate(-12deg);
+  width: clamp(7rem, 12vw, 11rem);
+  z-index: 5;
+}
+
+.brand-section {
+  background-color: var(--sky);
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.34) 0,
+    rgba(255, 255, 255, 0.34) 2px,
+    transparent 2px,
+    transparent 24px
+  );
+  display: grid;
+  gap: 5vw;
+  grid-template-columns: minmax(180px, 0.38fr) minmax(0, 1fr);
+  min-height: 90vh;
+  overflow: hidden;
+  padding: clamp(6rem, 10vw, 10rem) 7vw;
+  position: relative;
+}
+
+.brand-section::after {
+  color: rgba(255, 250, 231, 0.72);
+  content: "✦";
+  font-size: clamp(12rem, 32vw, 36rem);
+  line-height: 0.6;
+  position: absolute;
+  right: -4vw;
+  top: 2vw;
+  transform: rotate(12deg);
+}
+
+.brand-stamp {
+  align-self: start;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  font-size: clamp(1.6rem, 3.6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+  padding: 2.4rem 1rem;
+  text-align: center;
+  transform: rotate(-8deg);
+  width: min(18vw, 230px);
+}
+
+.brand-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.brand-copy h2 {
+  font-family: "Source Han Sans CN", "Noto Sans CJK SC", "PingFang SC", sans-serif;
+  font-size: clamp(3.2rem, 7vw, 8rem);
+  font-weight: 850;
+  letter-spacing: -0.08em;
+  line-height: 1.03;
+  margin: 0;
+  max-width: 66rem;
+}
+
+.brand-intro {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  line-height: 1.85;
+  margin: 5rem 0 0 auto;
+  max-width: 52rem;
+}
+
+.brand-intro p {
+  margin: 0;
+}
+
+.brand-values {
+  align-items: center;
+  border-top: 1px solid rgba(66, 39, 30, 0.3);
+  display: grid;
+  gap: 1rem;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: auto;
+  padding-top: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-values span {
+  align-items: center;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 700;
+  gap: 0.7rem;
+}
+
+.brand-values span::before {
+  background: var(--cream);
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  content: "";
+  height: 0.72rem;
+  width: 0.72rem;
+}
+
+.archive-section {
+  background: var(--cream);
+}
+
+.archive-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.archive-heading {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.archive-heading .section-kicker {
+  margin-bottom: 1rem;
+}
+
+.archive-heading > p {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+}
+
+.archive-card {
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-image {
+  aspect-ratio: 4 / 3;
+  background: var(--citrus);
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.archive-image img {
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.archive-card:hover .archive-image img {
+  transform: scale(1.035);
+}
+
+.archive-info {
+  align-content: end;
+  display: grid;
+  min-height: 340px;
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+.archive-info > p:first-child,
+.archive-info > p:nth-of-type(2) {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+}
+
+.archive-info h3 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.6rem, 4.4vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 1;
+  margin: 1.2rem 0 0.6rem;
+}
+
+.archive-info > p:nth-of-type(2) {
+  color: rgba(45, 33, 26, 0.5);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.archive-info a {
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  font-size: 0.78rem;
+  justify-content: space-between;
+  margin-top: 4rem;
+  padding-bottom: 0.85rem;
+}
+
+.archive-card-tarot .archive-image {
+  background: #dfdbff;
+}
+
+.archive-card-tarot .archive-image img {
+  object-position: center 42%;
+}
+
+.archive-card-necklace .archive-image {
+  background: #111;
+}
+
+.archive-card-necklace .archive-image img {
+  object-position: center;
+}
+
+.archive-card-heart-chain .archive-image {
+  background: var(--sky);
+}
+
+.archive-card-heart-chain .archive-image img {
+  object-position: center;
+}
+
+footer {
+  align-items: end;
+  background: var(--sky);
+  color: var(--ink);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr auto auto;
+  min-height: 36vh;
+  padding: 4vw;
+}
+
+.footer-wordmark {
+  height: clamp(110px, 15vw, 210px);
+  width: clamp(240px, 38vw, 560px);
+}
+
+footer p {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  margin: 0 0 0.8rem;
+}
+
+@media (max-width: 1020px) {
+  .brand-home {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-home-copy {
+    min-height: calc(78svh - 76px);
+    padding-left: 7vw;
+    padding-right: 7vw;
+  }
+
+  .brand-home-stage {
+    min-height: 82vw;
+  }
+
+  .brand-stage-tarot {
+    right: 7%;
+  }
+
+  .brand-philosophy {
+    gap: 5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .brand-philosophy-copy {
+    max-width: 48rem;
+  }
+
+  .product-family-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .universe-section {
+    grid-template-columns: 1fr;
+  }
+
+  .universe-copy {
+    max-width: 56rem;
+  }
+
+  .universe-visual {
+    min-height: 78vw;
+  }
+
+  .hero {
+    grid-template-columns: 44% 56%;
+  }
+
+  .hero-copy {
+    padding-left: 4vw;
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 8vw, 6rem);
+  }
+
+  .hero-image-wrap {
+    height: min(58vw, 640px);
+    width: min(58vw, 640px);
+  }
+
+  .film-section {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+
+  .tarot-hero,
+  .tarot-details,
+  .tarot-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .tarot-hero {
+    gap: 4rem;
+  }
+
+  .tarot-hero-image {
+    justify-self: center;
+    max-height: none;
+    width: min(78vw, 620px);
+  }
+
+  .tarot-views {
+    min-height: 70vw;
+  }
+
+  .tarot-gallery figure {
+    height: auto;
+  }
+
+  .tarot-colors {
+    aspect-ratio: 2.13 / 1;
+  }
+
+  .tarot-cards {
+    aspect-ratio: 750 / 1452;
+  }
+
+  .tarot-note {
+    grid-template-columns: 1fr;
+  }
+
+  .necklace-hero,
+  .necklace-packaging {
+    grid-template-columns: 1fr;
+  }
+
+  .heart-chain-hero,
+  .heart-chain-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .heart-chain-hero-image {
+    aspect-ratio: 1.2;
+    min-height: 68vw;
+  }
+
+  .heart-chain-specs-image {
+    min-height: 78vw;
+  }
+
+  .necklace-packaging-image {
+    min-height: 86vw;
+  }
+
+  .zodiac-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .archive-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brand-section {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-stamp {
+    width: 150px;
+  }
+
+  .brand-intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+    padding: 0 1.25rem;
+  }
+
+  .site-header nav {
+    display: none;
+  }
+
+  .brand-home-copy {
+    min-height: calc(82svh - 76px);
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .brand-home-copy h1 {
+    font-size: clamp(3.9rem, 11.5vw, 6.5rem);
+  }
+
+  .brand-home-stage {
+    min-height: 108vw;
+  }
+
+  .brand-stage-plush {
+    bottom: 9%;
+    height: 70%;
+    left: 4%;
+    width: 60%;
+  }
+
+  .brand-stage-tarot {
+    height: 40%;
+    right: 4%;
+    width: 35%;
+  }
+
+  .brand-stage-necklace {
+    bottom: 9%;
+    right: 4%;
+    width: 34%;
+  }
+
+  .brand-stage-ip {
+    left: 45%;
+    width: 28%;
+  }
+
+  .brand-philosophy {
+    min-height: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .product-lineup {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .product-lineup-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .product-family-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-family-image {
+    aspect-ratio: 1.08;
+  }
+
+  .product-family-info {
+    min-height: 250px;
+  }
+
+  .heart-chain-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .heart-chain-heading {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .heart-chain-heading > div {
+    text-align: left;
+  }
+
+  .heart-chain-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .heart-chain-hero-image {
+    aspect-ratio: 0.92;
+    min-height: 110vw;
+  }
+
+  .heart-chain-intro {
+    padding: 5rem 7vw;
+  }
+
+  .heart-chain-gallery-heading {
+    margin-bottom: 3rem;
+  }
+
+  .heart-chain-specs-image {
+    min-height: 105vw;
+  }
+
+  .universe-copy {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .universe-visual {
+    min-height: 105vw;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-copy {
+    min-height: calc(82svh - 76px);
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.7rem, 22vw, 7.5rem);
+  }
+
+  .hero-intro {
+    font-size: 1rem;
+  }
+
+  .hero-specs {
+    margin-top: 4rem;
+  }
+
+  .hero-visual {
+    min-height: 100vw;
+  }
+
+  .hero-image-wrap {
+    height: 86vw;
+    width: 86vw;
+  }
+
+  .manifesto {
+    min-height: 80svh;
+  }
+
+  .manifesto::before {
+    height: 100vw;
+    width: 100vw;
+  }
+
+  .manifesto::after {
+    height: 85vw;
+    width: 120vw;
+  }
+
+  .manifesto-orbit {
+    gap: 0.5rem;
+  }
+
+  .manifesto-orbit span:nth-child(2) {
+    display: none;
+  }
+
+  .section-heading,
+  .feature-layout,
+  .film-section,
+  .moments-section,
+  .gift-grid,
+  .archive-card {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading > p:last-child {
+    justify-self: start;
+    margin-top: 2rem;
+  }
+
+  .feature-layout {
+    gap: 3rem;
+  }
+
+  .film-section {
+    gap: 4rem;
+    padding: 7rem 12vw;
+  }
+
+  .film-frame {
+    justify-self: center;
+    max-height: none;
+    width: min(76vw, 460px);
+  }
+
+  .film-vertical {
+    display: none;
+  }
+
+  .moments-image {
+    min-height: 120vw;
+  }
+
+  .moments-copy {
+    padding: 6rem 7vw;
+  }
+
+  .gift-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-info {
+    min-height: 430px;
+  }
+
+  footer {
+    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .footer-wordmark {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    height: 66px;
+  }
+
+  .archive-link {
+    font-size: 0.7rem;
+  }
+
+  .brand-home,
+  .brand-philosophy,
+  .product-lineup,
+  .hero,
+  .tarot-section,
+  .necklace-section,
+  .heart-chain-section,
+  .universe-section,
+  .brand-section {
+    scroll-margin-top: 66px;
+  }
+
+  .brand-home {
+    padding-top: 66px;
+  }
+
+  .brand-home-copy {
+    align-content: start;
+    min-height: auto;
+    padding: 4.5rem 1.25rem 3.5rem;
+  }
+
+  .brand-home-copy h1 {
+    font-size: clamp(3rem, 12vw, 4.2rem);
+    line-height: 0.99;
+  }
+
+  .brand-home-lead {
+    margin-top: 2.2rem;
+  }
+
+  .brand-home-signoff {
+    margin-top: 3.5rem;
+  }
+
+  .brand-home-stage {
+    min-height: 126vw;
+  }
+
+  .brand-stage-plush {
+    bottom: 8%;
+    height: 68%;
+    width: 62%;
+  }
+
+  .brand-stage-tarot {
+    border-radius: 1.3rem;
+    height: 38%;
+    top: 6%;
+    width: 36%;
+  }
+
+  .brand-stage-necklace {
+    height: 32%;
+    width: 34%;
+  }
+
+  .brand-stage-ip {
+    height: 23%;
+    left: 42%;
+    width: 31%;
+  }
+
+  .brand-stage-label {
+    display: none;
+  }
+
+  .brand-marquee {
+    gap: 3rem;
+    min-height: 52px;
+  }
+
+  .brand-marquee span {
+    gap: 3rem;
+  }
+
+  .brand-philosophy {
+    gap: 3.5rem;
+    padding: 6rem 1.25rem;
+  }
+
+  .brand-philosophy h2 {
+    font-size: clamp(3.7rem, 18vw, 5.4rem);
+  }
+
+  .product-lineup {
+    padding: 6rem 1.25rem;
+  }
+
+  .product-lineup-heading h2 {
+    font-size: clamp(2.9rem, 14vw, 4.5rem);
+  }
+
+  .product-family-image {
+    aspect-ratio: 0.9;
+  }
+
+  .product-family-info {
+    min-height: 230px;
+    padding: 1.5rem;
+  }
+
+  .heart-chain-section {
+    padding: 6rem 1.25rem;
+  }
+
+  .heart-chain-heading {
+    margin-bottom: 3rem;
+  }
+
+  .heart-chain-heading h2 {
+    font-size: clamp(3rem, 14vw, 4.6rem);
+  }
+
+  .heart-chain-hero-image {
+    min-height: 118vw;
+  }
+
+  .heart-chain-intro {
+    padding: 4.5rem 1.5rem;
+  }
+
+  .heart-chain-intro dl {
+    grid-template-columns: 1fr;
+  }
+
+  .heart-chain-intro dl div {
+    border-bottom: 1px solid rgba(66, 39, 30, 0.2);
+    padding-bottom: 0.9rem;
+  }
+
+  .heart-chain-gallery-heading {
+    margin-top: 6rem;
+  }
+
+  .heart-chain-specs {
+    margin-top: 6rem;
+  }
+
+  .heart-chain-specs-copy {
+    padding: 4rem 1.5rem;
+  }
+
+  .heart-chain-specs-copy li {
+    align-items: end;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .heart-chain-specs-image {
+    min-height: 125vw;
+  }
+
+  .heart-chain-signoff {
+    align-items: start;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 6rem;
+  }
+
+  .universe-copy {
+    padding: 6rem 1.25rem 3rem;
+  }
+
+  .universe-copy h2 {
+    font-size: clamp(3rem, 14vw, 4.5rem);
+  }
+
+  .universe-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .universe-profile div:nth-child(odd) {
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .universe-profile div:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .universe-visual {
+    min-height: 120vw;
+  }
+
+  .universe-character-main {
+    height: 61%;
+    left: 17%;
+    width: 58%;
+  }
+
+  .universe-character-rest {
+    height: 30%;
+    width: 30%;
+  }
+
+  .universe-character-work {
+    height: 32%;
+    width: 32%;
+  }
+
+  .hero {
+    padding-top: 0;
+  }
+
+  .hero-copy {
+    min-height: calc(88svh - 66px);
+  }
+
+  .hero h1 {
+    margin-bottom: 2.3rem;
+  }
+
+  .hero-specs {
+    gap: 0.6rem;
+  }
+
+  .hero-specs dd {
+    font-size: 0.66rem;
+  }
+
+  .details-section,
+  .gift-section,
+  .archive-section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .section-heading,
+  .gift-heading {
+    margin-bottom: 3rem;
+  }
+
+  .size-note {
+    grid-template-columns: auto 1fr;
+  }
+
+  .size-divider {
+    display: none;
+  }
+
+  .film-section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .film-frame {
+    width: 86vw;
+  }
+
+  .tarot-hero {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .tarot-copy h2 {
+    font-size: clamp(3.6rem, 19vw, 5.5rem);
+  }
+
+  .tarot-stats {
+    gap: 0.6rem;
+  }
+
+  .tarot-stats dd {
+    font-size: 0.56rem;
+  }
+
+  .tarot-details,
+  .tarot-gallery {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
+  .tarot-views {
+    min-height: 88vw;
+  }
+
+  .tarot-feature-list {
+    padding: 3rem 1rem;
+  }
+
+  .tarot-note {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
+  .necklace-section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .necklace-heading {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .necklace-heading > div {
+    text-align: left;
+  }
+
+  .necklace-intro {
+    padding: 3rem 1.5rem;
+  }
+
+  .necklace-intro dl {
+    gap: 0.6rem;
+  }
+
+  .zodiac-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .necklace-packaging-copy {
+    padding: 3rem 1.5rem;
+  }
+
+  .brand-section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .brand-copy h2 {
+    font-size: clamp(2.8rem, 14vw, 4.6rem);
+  }
+
+  .brand-values {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .archive-info {
+    min-height: 360px;
+  }
+
+  footer {
+    min-height: 28vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
