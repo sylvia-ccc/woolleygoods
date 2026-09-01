@@ -87,7 +87,7 @@ export function ProductDetail({ slug, locale }: ProductDetailProps) {
         ctaLabel="ALL PRODUCTS"
       />
 
-      <article>
+      <article id="main-content" tabIndex={-1}>
         <section className="product-detail-hero">
           <div className="product-detail-copy">
             <p className="section-kicker">
@@ -99,10 +99,16 @@ export function ProductDetail({ slug, locale }: ProductDetailProps) {
             <h1>{copy.name}</h1>
             <p className="product-detail-name-en">{copy.secondaryName}</p>
             <p className="product-detail-tagline">{copy.tagline}</p>
-            <a className="button button-dark" href="#story">
-              {isEnglish ? "View product" : "查看产品"}{" "}
-              <span aria-hidden="true">↓</span>
-            </a>
+            <div className="product-detail-actions">
+              <a className="button button-dark" href="#story">
+                {isEnglish ? "View product" : "查看产品"}{" "}
+                <span aria-hidden="true">↓</span>
+              </a>
+              <Link className="button button-light" href={`${basePath}/products`}>
+                {isEnglish ? "Browse collection" : "浏览产品系列"}{" "}
+                <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
           </div>
 
           <div className="product-detail-visual">

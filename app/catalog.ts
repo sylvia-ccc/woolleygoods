@@ -73,6 +73,48 @@ export const heartChainProduct = {
   },
 } as const;
 
+export const pocketPetProduct = {
+  index: "005",
+  code: "EB-2",
+  category: "科技潮玩",
+  categoryEn: "TECH TOY",
+  name: "乌哩掌心萌宠",
+  nameEn: "Woolley Pocket Pet",
+  assets: {
+    hero: "/products/eb-2-pocket-pet/hero.jpg",
+    plushCover: "/products/eb-2-pocket-pet/plush-cover.jpg",
+    keychain: "/products/eb-2-pocket-pet/keychain.jpg",
+    productList: "/products/eb-2-pocket-pet/product-list.jpg",
+    instructions: "/products/eb-2-pocket-pet/instructions.jpg",
+    expressions: "/products/eb-2-pocket-pet/expressions.jpg",
+    miniProgram: "/products/eb-2-pocket-pet/mini-program.jpg",
+  },
+} as const;
+
+export const hushProduct = {
+  index: "006",
+  code: "HUSH-01",
+  category: "AI 陪伴",
+  categoryEn: "AI COMPANION",
+  name: "秘密守护兽",
+  nameEn: "Whisper Keeper",
+  assets: {
+    hero: "/products/hush-whisper-keeper/hero.png",
+  },
+} as const;
+
+export const bondProduct = {
+  index: "007",
+  code: "BOND-02",
+  category: "AI 陪伴",
+  categoryEn: "AI COMPANION",
+  name: "约定石",
+  nameEn: "Bond Promise Companions",
+  assets: {
+    hero: "/products/bond-promise-companions/hero.png",
+  },
+} as const;
+
 export const brandDirections = ["科技潮玩", "潮流配饰", "交互毛绒", "AI 陪伴"];
 export const brandDirectionsEn = [
   "Tech Toys",
@@ -80,6 +122,12 @@ export const brandDirectionsEn = [
   "Interactive Plush",
   "AI Companions",
 ];
+
+export const siteConfig = {
+  company: "深圳乌哩文化创意有限公司",
+  companyEn: "Shenzhen Woolley Creative Co., Ltd.",
+  founded: "2025",
+} as const;
 
 export type Locale = "zh" | "en";
 
@@ -100,6 +148,8 @@ export type ProductPage = {
   theme: ProductTheme;
   hero: string;
   heroFit?: "cover" | "contain";
+  listingHero?: string;
+  listingHeroFit?: "cover" | "contain";
   specs: Array<{
     label: string;
     labelEn: string;
@@ -135,6 +185,8 @@ export const productPages: ProductPage[] = [
     theme: "plush",
     hero: plushProduct.assets.hero,
     heroFit: "contain",
+    listingHero: plushProduct.assets.angles,
+    listingHeroFit: "contain",
     specs: [
       {
         label: "尺寸",
@@ -200,6 +252,8 @@ export const productPages: ProductPage[] = [
     theme: "tech",
     hero: tarotProduct.assets.hero,
     heroFit: "contain",
+    listingHero: tarotProduct.assets.hero,
+    listingHeroFit: "contain",
     specs: [
       {
         label: "屏幕",
@@ -266,6 +320,8 @@ export const productPages: ProductPage[] = [
     theme: "necklace",
     hero: necklaceProduct.assets.hero,
     heroFit: "contain",
+    listingHero: necklaceProduct.assets.hero,
+    listingHeroFit: "contain",
     specs: [
       {
         label: "系列",
@@ -330,6 +386,8 @@ export const productPages: ProductPage[] = [
     theme: "heart",
     hero: heartChainProduct.assets.realShot,
     heroFit: "contain",
+    listingHero: heartChainProduct.assets.hero,
+    listingHeroFit: "contain",
     specs: [
       {
         label: "尺寸",
@@ -374,6 +432,228 @@ export const productPages: ProductPage[] = [
         fit: "contain",
       },
     ],
+  },
+  {
+    slug: "eb-2-pocket-pet",
+    index: pocketPetProduct.index,
+    code: pocketPetProduct.code,
+    category: pocketPetProduct.category,
+    categoryEn: pocketPetProduct.categoryEn,
+    name: pocketPetProduct.name,
+    nameEn: pocketPetProduct.nameEn,
+    tagline: "把会回应情绪的小伙伴，挂在身边。",
+    taglineEn: "Carry a tiny companion that responds to every mood.",
+    intro:
+      "一款把电子互动、柔软毛绒与随身挂件融合在一起的掌心萌宠。长按唤醒乌哩，让丰富表情回应触摸与动作，还能通过 Woolley 小程序持续更新玩法与素材。",
+    introEn:
+      "A palm-sized companion blending electronic interaction, a soft plush cover, and an everyday charm. Wake Woolley with a long press, discover expressive reactions to touch and movement, and unlock fresh play through the Woolley Mini Program.",
+    theme: "tech",
+    hero: pocketPetProduct.assets.hero,
+    heroFit: "contain",
+    listingHero: pocketPetProduct.assets.plushCover,
+    listingHeroFit: "contain",
+    specs: [
+      {
+        label: "形态",
+        labelEn: "Format",
+        value: "电子吧唧",
+        valueEn: "Interactive digital badge",
+      },
+      {
+        label: "互动",
+        labelEn: "Interaction",
+        value: "触摸与动作表情",
+        valueEn: "Touch and motion reactions",
+      },
+      {
+        label: "扩展",
+        labelEn: "Extension",
+        value: "Woolley 小程序",
+        valueEn: "Woolley Mini Program",
+      },
+    ],
+    gallery: [
+      {
+        src: pocketPetProduct.assets.productList,
+        alt: "EB-2 乌哩掌心萌宠产品清单",
+        altEn: "Product list for the EB-2 Woolley Pocket Pet",
+        label: "主机、毛绒套与完整配件",
+        labelEn: "Console, plush cover, and complete accessories",
+        fit: "contain",
+      },
+      {
+        src: pocketPetProduct.assets.instructions,
+        alt: "乌哩掌心萌宠使用说明",
+        altEn: "Instructions for using the Woolley Pocket Pet",
+        label: "从开机到装入毛绒外套",
+        labelEn: "From powering on to fitting the plush cover",
+        fit: "contain",
+      },
+      {
+        src: pocketPetProduct.assets.expressions,
+        alt: "乌哩掌心萌宠互动表情说明",
+        altEn: "Interactive expressions of the Woolley Pocket Pet",
+        label: "触摸、摇晃与待机都有回应",
+        labelEn: "Responses to touch, movement, and idle moments",
+        fit: "contain",
+      },
+      {
+        src: pocketPetProduct.assets.miniProgram,
+        alt: "Woolley 小程序功能说明",
+        altEn: "Woolley Mini Program feature overview",
+        label: "上传素材并发现持续更新的内容",
+        labelEn: "Upload artwork and discover evolving content",
+        fit: "contain",
+      },
+      {
+        src: pocketPetProduct.assets.plushCover,
+        alt: "手掌中的乌哩掌心萌宠毛绒形态",
+        altEn: "Woolley Pocket Pet in its palm-sized plush form",
+        label: "柔软毛绒套，轻巧捧在掌心",
+        labelEn: "A soft plush cover sized for your palm",
+        fit: "contain",
+      },
+      {
+        src: pocketPetProduct.assets.keychain,
+        alt: "乌哩掌心萌宠挂件形态",
+        altEn: "Woolley Pocket Pet styled as a charm",
+        label: "随身挂起，让陪伴一直在线",
+        labelEn: "Clip it on and keep your companion close",
+        fit: "contain",
+      },
+    ],
+  },
+  {
+    slug: "hush-whisper-keeper",
+    index: hushProduct.index,
+    code: hushProduct.code,
+    category: hushProduct.category,
+    categoryEn: hushProduct.categoryEn,
+    name: hushProduct.name,
+    nameEn: hushProduct.nameEn,
+    tagline: "每天说一句，等未来的你来打开。",
+    taglineEn: "One whisper a day. Sealed until the future.",
+    intro:
+      "一只安静、稳定、不追问的桌面守护者。长按胸口留下每天唯一的一句低语，它会将声音加密封存，直到约定的未来才安全归还。它不分析、不转写，也不会替你回答——未来的你，才是这段关系真正的回应者。",
+    introEn:
+      "A quiet, steady desk guardian that never asks you to explain. Hold its chest to leave one whisper a day; your voice is encrypted and sealed until the date you chose. It does not transcribe, analyze, or answer—the future you completes the conversation.",
+    theme: "tech",
+    hero: hushProduct.assets.hero,
+    heroFit: "cover",
+    listingHero: hushProduct.assets.hero,
+    listingHeroFit: "cover",
+    specs: [
+      {
+        label: "每日低语",
+        labelEn: "Daily whisper",
+        value: "每天 1 条 · 2–60 秒",
+        valueEn: "One per day · 2–60 seconds",
+      },
+      {
+        label: "隐私",
+        labelEn: "Privacy",
+        value: "本地优先 · 零知识加密",
+        valueEn: "Local-first · zero-knowledge encryption",
+      },
+      {
+        label: "连接",
+        labelEn: "Connectivity",
+        value: "BLE 5.x · 首代无 Wi-Fi",
+        valueEn: "BLE 5.x · no Wi-Fi in Gen 1",
+      },
+      {
+        label: "续航目标",
+        labelEn: "Battery target",
+        value: "典型使用 ≥ 14 天",
+        valueEn: "14+ days of typical use",
+      },
+      {
+        label: "产品尺寸",
+        labelEn: "Product size",
+        value: "60–90 mm · 80–160 g",
+        valueEn: "60–90 mm · 80–160 g",
+      },
+    ],
+    gallery: [
+      {
+        src: hushProduct.assets.hero,
+        alt: "秘密守护兽 HUSH 概念产品渲染",
+        altEn: "Concept rendering of the HUSH Whisper Keeper",
+        label: "树洞、种子、年轮与星光组成的安静守护形态",
+        labelEn: "A quiet guardian shaped by tree hollows, seeds, rings, and starlight",
+        fit: "cover",
+      },
+    ],
+    note:
+      "概念产品：功能、材料、尺寸、续航及安全方案仍需经过工程验证，最终以量产版本为准。",
+    noteEn:
+      "Concept product: features, materials, dimensions, battery life, and security architecture remain subject to engineering validation.",
+  },
+  {
+    slug: "bond-promise-companions",
+    index: bondProduct.index,
+    code: bondProduct.code,
+    category: bondProduct.category,
+    categoryEn: bondProduct.categoryEn,
+    name: bondProduct.name,
+    nameEn: bondProduct.nameEn,
+    tagline: "两个人，把同一个以后放在这里。",
+    taglineEn: "Two people, keeping the same future in one place.",
+    intro:
+      "一对为双人约定而生的陪伴物。两边分别封存一句话与一个未来日期，只有当约定到期、两枚约定石再次靠近时，光线才会合拢，完成一次属于两个人的双向归还。",
+    introEn:
+      "A paired companion object for promises shared by two people. Each side seals a message and a future date; only when the promise matures and the two stones meet again does their light join and return both voices.",
+    theme: "heart",
+    hero: bondProduct.assets.hero,
+    heroFit: "cover",
+    listingHero: bondProduct.assets.hero,
+    listingHeroFit: "cover",
+    specs: [
+      {
+        label: "产品形态",
+        labelEn: "Format",
+        value: "双设备陪伴套装",
+        valueEn: "Paired companion set",
+      },
+      {
+        label: "核心功能",
+        labelEn: "Core function",
+        value: "双人封存 · 到期共同开启",
+        valueEn: "Dual seal · shared future unlock",
+      },
+      {
+        label: "隐私",
+        labelEn: "Privacy",
+        value: "双设备密钥 · 本地加密",
+        valueEn: "Two-device key · local encryption",
+      },
+      {
+        label: "连接",
+        labelEn: "Connectivity",
+        value: "BLE · 近距离合体反馈",
+        valueEn: "BLE · proximity reunion feedback",
+      },
+      {
+        label: "充电设想",
+        labelEn: "Charging concept",
+        value: "共享磁吸充电底座",
+        valueEn: "Shared magnetic charging dock",
+      },
+    ],
+    gallery: [
+      {
+        src: bondProduct.assets.hero,
+        alt: "BOND 约定石双人陪伴概念产品渲染",
+        altEn: "Concept rendering of the BOND Promise Companions",
+        label: "两枚互补守护石，以一束合体光线确认共同约定",
+        labelEn: "Two complementary guardian stones joined by one shared line of light",
+        fit: "cover",
+      },
+    ],
+    note:
+      "未来概念研究：目前不属于秘密守护兽首代量产范围，规格与交互仍待原型验证。",
+    noteEn:
+      "Future concept study: not part of the first-generation HUSH production scope; specifications and interactions remain subject to prototype validation.",
   },
 ];
 

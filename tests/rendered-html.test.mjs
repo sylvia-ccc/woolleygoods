@@ -47,6 +47,10 @@ test("server-renders the Woolley official website", async () => {
   assert.match(html, /让每一次热爱/);
   assert.match(html, /href="\/products"/);
   assert.match(html, /href="\/about"/);
+  assert.match(html, /跳转到正文/);
+  assert.match(html, /mobile-menu-toggle/);
+  assert.match(html, /深圳乌哩文化创意有限公司/);
+  assert.match(html, /aria-current="page"/);
   assert.match(html, /brand\/woolley-logo\.png/);
   assert.doesNotMatch(html, /\/_vinext\/image\?/);
   assert.doesNotMatch(html, /id="products"|id="about"/);
@@ -64,6 +68,10 @@ test("splits products and brand content into dedicated pages", async () => {
   assert.match(productsHtml, /乌哩掌心塔罗/);
   assert.match(productsHtml, /星座塔罗项链/);
   assert.match(productsHtml, /乌哩银色桃心挂链/);
+  assert.match(productsHtml, /乌哩掌心萌宠/);
+  assert.match(productsHtml, /秘密守护兽/);
+  assert.match(productsHtml, /约定石/);
+  assert.match(productsHtml, /07 PRODUCTS/);
   assert.match(productsHtml, /products\/hug-pomelo-leaf/);
   assert.doesNotMatch(productsHtml, /id="about"/);
 
@@ -93,6 +101,9 @@ test("server-renders each product on an independent route", async () => {
       "乌哩银色桃心挂链",
       "26 × 270 mm",
     ],
+    ["/products/eb-2-pocket-pet", "乌哩掌心萌宠", "Woolley 小程序"],
+    ["/products/hush-whisper-keeper", "秘密守护兽", "零知识加密"],
+    ["/products/bond-promise-companions", "约定石", "双设备密钥"],
   ];
 
   for (const [pathname, productName, productSpec] of routes) {
@@ -107,6 +118,7 @@ test("server-renders each product on an independent route", async () => {
     assert.match(html, /NEXT/, pathname);
     assert.match(html, /全部产品/, pathname);
     assert.match(html, /href="\/products"/, pathname);
+    assert.match(html, /浏览产品系列/);
     assert.doesNotMatch(html, /\/_vinext\/image\?/, pathname);
   }
 });
@@ -136,6 +148,9 @@ test("server-renders the English website and localized product routes", async ()
   assert.match(productsHtml, /The Universe in a Nutshell/);
   assert.match(productsHtml, /Zodiac Tarot Necklace/);
   assert.match(productsHtml, /Silver Heart Shake Chain/);
+  assert.match(productsHtml, /Woolley Pocket Pet/);
+  assert.match(productsHtml, /Whisper Keeper/);
+  assert.match(productsHtml, /Bond Promise Companions/);
   assert.match(productsHtml, /en\/products\/hug-pomelo-leaf/);
 
   const aboutResponse = await render("/en/about");
@@ -159,6 +174,21 @@ test("server-renders the English website and localized product routes", async ()
       "/en/products/eb-shake-silver-heart",
       "Silver Heart Shake Chain",
       "Bags / belt loops / display",
+    ],
+    [
+      "/en/products/eb-2-pocket-pet",
+      "Woolley Pocket Pet",
+      "Woolley Mini Program",
+    ],
+    [
+      "/en/products/hush-whisper-keeper",
+      "Whisper Keeper",
+      "zero-knowledge encryption",
+    ],
+    [
+      "/en/products/bond-promise-companions",
+      "Bond Promise Companions",
+      "Two-device key",
     ],
   ];
 
@@ -213,6 +243,8 @@ test("keeps the brand system and product assets wired", async () => {
   assert.match(catalog, /category:\s*"科技潮玩"/);
   assert.match(catalog, /category:\s*"潮流配饰"/);
   assert.match(catalog, /code:\s*"EB-SHAKE"/);
+  assert.match(catalog, /code:\s*"EB-2"/);
+  assert.match(catalog, /listingHero/);
   assert.match(productRoute, /generateProductStaticParams/);
   assert.match(productDetail, /productPageMap\.get\(slug\)/);
   assert.match(productDetail, /product-pagination/);
@@ -272,6 +304,36 @@ test("keeps the brand system and product assets wired", async () => {
     access(
       new URL(
         "../public/products/eb-shake-silver-heart/backing-card.png",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL(
+        "../public/products/eb-2-pocket-pet/hero.jpg",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL(
+        "../public/products/eb-2-pocket-pet/instructions.jpg",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL(
+        "../public/products/eb-2-pocket-pet/mini-program.jpg",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL(
+        "../public/products/hush-whisper-keeper/hero.png",
+        import.meta.url,
+      ),
+    ),
+    access(
+      new URL(
+        "../public/products/bond-promise-companions/hero.png",
         import.meta.url,
       ),
     ),

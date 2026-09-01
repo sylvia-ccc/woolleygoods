@@ -10,6 +10,7 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.woolleygoods.com"),
   applicationName: "Woolleygoods",
+  themeColor: "#fffae7",
   title: {
     default: "Woolleygoods｜Woolley 乌哩文化创意",
     template: "%s｜Woolley",

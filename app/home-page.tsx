@@ -91,7 +91,8 @@ export default function HomePage({
         ctaLabel={ctaLabel}
       />
 
-      {page === "home" ? (
+      <div id="main-content" className="page-content" tabIndex={-1}>
+        {page === "home" ? (
         <>
           <section className="brand-home" id="top">
         <div className="brand-home-copy">
@@ -131,7 +132,6 @@ export default function HomePage({
               src={tarotProduct.assets.hero}
               alt="乌哩掌心塔罗科技潮玩"
               fill
-              priority
               unoptimized
               sizes="(max-width: 860px) 34vw, 18vw"
             />
@@ -169,17 +169,22 @@ export default function HomePage({
         </>
       ) : null}
 
-      {page === "products" ? (
-        <section className="product-lineup" id="products">
+        {page === "products" ? (
+        <section
+          className={`product-lineup product-count-${productPages.length}`}
+          id="products"
+        >
         <div className="product-lineup-heading">
           <div>
             <p className="section-kicker">SELECTED PRODUCTS</p>
             <h2>{copy.lineupHeading}</h2>
           </div>
-          <p>04 PRODUCTS · INDIVIDUAL STORIES</p>
+          <p>
+            {`${String(productPages.length).padStart(2, "0")} PRODUCTS · INDIVIDUAL STORIES`}
+          </p>
         </div>
         <div className="product-family-grid">
-          {productPages.map((product) => {
+          {productPages.map((product, index) => {
             const productCopy = getProductCopy(product, locale);
 
             return (
@@ -190,16 +195,20 @@ export default function HomePage({
               >
                 <div className="product-family-image">
                   <Image
-                    src={product.hero}
+                    src={product.listingHero ?? product.hero}
                     alt={
                       locale === "en"
                         ? `${productCopy.name} product view`
                         : `${productCopy.name}产品展示`
                     }
                     fill
+                    priority={index === 0}
                     unoptimized
                     sizes="(max-width: 820px) 50vw, 25vw"
-                    style={{ objectFit: product.heroFit ?? "cover" }}
+                    style={{
+                      objectFit:
+                        product.listingHeroFit ?? product.heroFit ?? "cover",
+                    }}
                   />
                 </div>
                 <div className="product-family-info">
@@ -219,7 +228,7 @@ export default function HomePage({
         </section>
       ) : null}
 
-      {page === "about" ? (
+        {page === "about" ? (
         <section className="brand-section home-brand-section" id="about">
         <div className="brand-stamp" aria-hidden="true">
           FUN
@@ -244,7 +253,8 @@ export default function HomePage({
           ))}
         </div>
         </section>
-      ) : null}
+        ) : null}
+      </div>
 
       <SiteFooter locale={locale} />
     </main>
