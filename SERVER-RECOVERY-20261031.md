@@ -41,9 +41,12 @@ DNS 托管：`woolleygoods.com` → 阿里云 hichina；`bigmonsterclaw.com` →
 ## 服务与自启
 
 ```
-nginx  youling-mojin  miaojian  gaokao  solo  neuroviz  tarot-api
+nginx  youling-mojin  miaojian  gaokao  solo  neuroviz  tarot-api  ollama
 ```
 全部 `systemctl is-enabled` = enabled、`is-active` = active。
+
+塔罗 AI 链路：`ollama`（11434）→ `tarot-api`（8000）→ nginx `/v1/` 反代 → 前端同源调用。
+模型不可用时 `tarot-api` 自动降级到 `reader.py` 本地规则引擎，站点不会挂。
 
 ## 数据恢复情况
 
@@ -60,8 +63,24 @@ nginx  youling-mojin  miaojian  gaokao  solo  neuroviz  tarot-api
 
 - **n8n 工作流**：Docker 卷已清，**无导出文件**，无法恢复。
 - **stock-analysis 后端**：只有 skill，**无源码**，无法恢复。
-- **塔罗站的 ollama 模型**：2026-09-18 上线时服务器上的 ollama **二进制就没装成功**（部署记录原文："binary 未生成"），
-  所以站点一直跑 `reader.py` 本地规则引擎兜底。恢复后状态与事故前一致。
+
+### 塔罗站的 AI 模型（本次补齐）
+
+2026-09-18 上线时服务器上的 ollama **二进制就没装成功**（部署记录原文："binary 未生成"），
+所以塔罗站一直跑 `reader.py` 本地规则引擎兜底 —— 这是事故前的真实状态，不是本次恢复造成的缺口。
+2026-10-31 已补齐，AI 对话现为真模型：
+
+| 项 | 值 |
+|---|---|
+| ollama | 0.40.13，`/usr/local/bin/ollama`，systemd `ollama.service`，监听 `127.0.0.1:11434` |
+| 模型 | `qwen2.5:1.5b`（986 MB），位于 `/usr/share/ollama/.ollama/models` |
+| 推理 | 纯 CPU（无 GPU），短回复约 5s；`/health` 会报 `alerts: latency`，属正常 |
+| tarot-api 接入 | `TAROT_LLM_BASE_URL=http://127.0.0.1:11434/v1`、`TAROT_LLM_MODEL=qwen2.5:1.5b` |
+| 实测 | `/v1/readings` → `mode: cloud`、`model: cloud:qwen2.5:1.5b`；`/v1/chat` → `fallback: false` |
+
+**装 ollama 的坑**：服务器直连 github 只有约 37KB/s，官方 `install.sh` 下一个 1.5GB 包的包要十几小时。
+解法是**本机经代理下载（4.4MB/s）+ rsync 传服务器（6.5MB/s）**，3 分半传完。
+但**模型 blob 必须由服务器直连 `registry.ollama.ai`**（2.7MB/s，本机代理反而过不去 R2 端点）。
 
 ## 踩坑清单（下次重建照着做）
 
